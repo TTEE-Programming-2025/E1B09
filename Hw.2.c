@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<conio.h>
 int main(void)
 {
 	int i,j,k,l,m,n,wrong=0,password,num;
-	char option,ch1,test;
+	char option,ch1,ch2,test;
+	
 	printf("*********************************\n");			//印出個人風格的畫面
 	for(i=1;i<=6;i++)
 	{	
@@ -13,7 +15,7 @@ int main(void)
 	}
 	printf("***********************************\n");
 	
-		printf("密碼是2025\n");
+	printf("密碼是2025\n");
 	
 	do												    	//密碼判斷 
 	{
@@ -106,7 +108,35 @@ int main(void)
 			}
 			test=getch();
 		}
-	} 
+		
+		if(option=='c'||option=='C')						//c選項 
+		{
+			do
+			{ 
+				printf("Continue?(y/n):");
+				fflush(stdin);
+				scanf("%c",&ch2);
+				if(ch2=='y'||ch2=='Y'||ch2=='n'||ch2=='N')	//判斷輸入的字元是否在範圍內 
+				{
+					break;
+				}
+				printf("輸入錯誤，請輸入Y/y或N/n\n"); 
+				
+			}while(1);
+			
+			if(ch2=='Y'||ch2=='y')							//回到主選單 
+			{
+				continue;
+			}
+			
+			if(ch2=='N'||ch2=='n')							//結束迴圈 
+			{
+				return 0;
+			}
+			test=getch();
+		}
+	}
+	
 	system("pause");
 	return 0;
 }
