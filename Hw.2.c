@@ -2,7 +2,7 @@
 #include<stdlib.h>
 int main(void)
 {
-	int i,j,k,l,wrong=0,password;
+	int i,j,k,l,m,n,wrong=0,password,num;
 	char option,ch1,test;
 	printf("*********************************\n");			//印出個人風格的畫面
 	for(i=1;i<=6;i++)
@@ -49,7 +49,7 @@ int main(void)
 		printf("@@@@@@@@@@@@@@@@@@@@@@\n");
 		
 		printf("請輸入你要選擇的選項(a,b,c):"); 			//輸入選擇
-		fflush(stdin);									//清除緩衝區 
+		fflush(stdin);										//清除緩衝區 
 		scanf("%c",&option);
 			
 		if(option=='a'||option=='A')						// a 選項 
@@ -58,16 +58,16 @@ int main(void)
 		
 			do{
 				printf("請輸入a-n的字元:");
-				fflush(stdin);
+				fflush(stdin);								//清除緩衝區
 				scanf("%c",&ch1);
-				if(ch1>='a'&&ch1<='n')
+				if(ch1>='a'&&ch1<='n')						//判斷輸入字元是否在a-n之間 
 				{
 					break;
 				}
 				printf("輸入錯誤請重新輸入\n");
 			}while(1);
 		
-			for(j=ch1;j>='a';j--)
+			for(j=ch1;j>='a';j--)							//印出三角形 
 			{
 				for(k='a';k<=j;k++)
 				{
@@ -79,6 +79,30 @@ int main(void)
 					printf("%c",l);
 				}
 				printf("\n");
+			}
+			test=getch();
+		}
+		
+		if(option=='b'||option=='B')						//b選項 
+		{
+			do
+			{
+				printf("請輸1-9的整數:");
+				fflush(stdin);								//清除緩衝區 
+				scanf("%d",&num);
+				if(num>=1&&num<=9)							//判斷輸入的數是否在1-9之間 
+				{
+					break;
+				}
+				printf("輸入錯誤請重新輸入\n");
+			}while(1);
+		
+			for(m=1;m<=num;m++)								//印出1*1至n*n的乘法表 
+			{
+				for(n=1;n<=num;n++)
+				{
+					printf("%d * %d =%d\n",m,n,m*n);
+				}
 			}
 			test=getch();
 		}
