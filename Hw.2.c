@@ -33,6 +33,17 @@ int main(void)
 		wrong++;									    	//密碼錯誤時此wrong變數+1 
 	
 	}while(1);
+	
+		system("CLS");										//清除螢幕
+		printf("@@@@@@@@@@@@@@@@@@@@@@\n");					//個人風格選單
+		printf("@                    @\n");
+		printf("@  a. 畫出直角三角形 @\n");
+		printf("@                    @\n");
+		printf("@  b. 顯示乘法表     @\n");
+		printf("@                    @\n");
+		printf("@  c. 結束           @\n");
+		printf("@                    @\n");
+		printf("@@@@@@@@@@@@@@@@@@@@@@\n");
 	system("pause");
 	return 0;
 }
