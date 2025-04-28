@@ -2,7 +2,7 @@
 #include<stdlib.h>
 int main(void)
 {
-	int i,wrong,password;
+	int i,wrong=0,password;
 	printf("*********************************\n");			//印出個人風格的畫面
 	for(i=1;i<=6;i++)
 	{	
