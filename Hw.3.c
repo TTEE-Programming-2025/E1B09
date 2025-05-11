@@ -3,6 +3,7 @@
 int main(void)
 {
 	int i,j,wrong=0,password;
+	char option,accepted;
 	
 	printf("**********************************************\n");			//Print a personalized screen display
     for (i=0;i<20;i++) {
@@ -51,6 +52,36 @@ int main(void)
 		printf("| c. Choose by yourself            |\n");
 		printf("| d. Exit                          |\n");
 		printf("------------------------------------\n");
+		
+		printf("請輸入你要選擇的選項:");
+		fflush(stdin);
+		scanf("%c",&option);
+		//Option d
+		if(option=='d')
+		{
+		do
+			{ 
+				printf("Continue?(y/n):");
+				fflush(stdin);
+				scanf("%c",&accepted);
+				if(accepted=='y'||accepted=='n')			//判斷輸入的字元是否在範圍內 
+				{
+					break;
+				}
+				printf("輸入錯誤，請輸入y或n\n"); 
+				
+			}while(1);
+			
+			if(accepted=='y')			//回到主選單 
+			{
+				continue;
+			}
+			
+			if(accepted=='n')			//結束迴圈 
+			{
+				return 0;
+			}
+		}
 	}
 
 	system("pause");
