@@ -36,9 +36,22 @@ int main(void)
 		}
 		
 		printf("密碼錯誤請重新輸入\n");
-		wrong++;									    	//密碼錯誤時此wrong變數+1 
+		wrong++;			//密碼錯誤時此wrong變數+1 
 	
 	}while(1);
+	
+	while(1)
+	{
+		system("pause");
+		system("CLS");
+		
+		printf("----------[Booking System]----------\n");			//Display the main menu
+		printf("| a. Available seats               |\n");
+		printf("| b. Arrange for you               |\n");
+		printf("| c. Choose by yourself            |\n");
+		printf("| d. Exit                          |\n");
+		printf("------------------------------------\n");
+	}
 
 	system("pause");
 	return 0;
