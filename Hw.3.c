@@ -1,11 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h> 
+#include<time.h>
+void showseats(char ch[9][9]);			//Function to display the seat arrangement
 int main(void)
 {
 	int i,j,wrong=0,password,a1=0,a2,a3,b1,b2,b3,b4,b5,num,c1,c3,c4=1;
 	char option,accepted,c2;
 	char seats[9][9];
+	srand(time(NULL));			//Used for generating random numbers
 	
 	printf("**********************************************\n");			//Print a personalized screen display
     for (i=0;i<20;i++) {
@@ -23,9 +25,9 @@ int main(void)
 	
 	printf("歡迎~\n");
 	
-	do			//密碼判斷 
+	do			//Password verification loop
 	{
-		if(wrong==3)			//當wrong=3時表示密碼錯誤三次將結束此程式
+		if(wrong==3)			//If wrong = 3, indicating 3 incorrect password attempts, the program will end
 		{
 			printf("抱歉密碼已經錯誤三次，將結束此程式"); 
 			return 0;
@@ -33,38 +35,38 @@ int main(void)
 		
 		printf("請輸入四個數字的密碼:");
 		scanf("%d",&password);
-		if(password==2025)
+		if(password==2025)			//If password is correct, break the loop
 		{
 			break;
 		}
 		
 		printf("密碼錯誤請重新輸入\n");
-		wrong++;			//密碼錯誤時此wrong變數+1 
+		wrong++;			//密Increase wrong variable by 1 on incorrect password 
 	
 	}while(1);
 	
-	for(i=0;i<9;i++)
+	for(i=0;i<9;i++)			//Initialize the seat array, all set to empty seats
 			{
 				for(j=0;j<9;j++)
 				{
-					seats[i][j]='-';
+					seats[i][j]='-';			//Empty seat represented by '-'
 				}
 			}
 			
-			while(a1<=9)
+			while(a1<=9)			//Randomly arrange initial booked seats
 			{
 				a2=rand()%9;
 				a3=rand()%9;
-				if(seats[a2][a3]=='-')
+				if(seats[a2][a3]=='-')			//If the position is empty, book it
 				{
-					seats[a2][a3]='*';
+					seats[a2][a3]='*';			//Booked seat represented by '*'
 					a1++;
 				}
 			}
 	
 	while(1)
 	{
-		system("CLS");
+		system("CLS");			//Clear the screen
 		
 		printf("----------[Booking System]----------\n");			//Display the main menu
 		printf("| a. Available seats               |\n");
@@ -75,20 +77,11 @@ int main(void)
 		
 		printf("請輸入你要選擇的選項:");
 		fflush(stdin);
-		scanf("%c",&option);
+		scanf("%c",&option);			//Input option
 		//Option a
-		if(option=='a')
+		if(option=='a')			
 		{	
-			printf("\\123456789\n");
-			for(i=8;i>=0;i--)
-			{
-				printf("%d ",i+1);
-				for(j=0;j<=8;j++)
-				{
-					printf("%c",seats[i][j]);
-				}
-				printf("\n");
-			}
+			showseats(seats);
 			system("pause");
 		}
 		//Option b
@@ -96,9 +89,9 @@ int main(void)
 		{
 			printf("請問您需要幾個座位？(1-4):");
             fflush(stdin);
-            scanf("%d",&b1);
+            scanf("%d",&b1);			//Input the number of seats needed
             
-            if(b1==1)
+            if(b1==1)			//Need 1 seat
             {
             	while(1)
             	{
@@ -110,19 +103,10 @@ int main(void)
 						break;
 					}
 				}
-    			printf("\\123456789\n");
-    			for(i=8;i>=0;i--)
-    			{
-        			printf("%d ",i+1);
-        			for(j=0;j<=8;j++)
-        			{
-            			printf("%c",seats[i][j]);
-        			}
-        			printf("\n");
-    			}
+    			showseats(seats);
 			}	
 			
-			if(b1==2)
+			if(b1==2)			//Need 2 seats
             {
             	while(1)
 				{
@@ -135,20 +119,10 @@ int main(void)
                     	break;
                 	}
 				}
-            	
-                	
-                printf("\\123456789\n");
-    			for(i=8;i>=0;i--)
-    			{
-        			printf("%d ",i+1);
-        			for(j=0;j<=8;j++)
-        			{
-            			printf("%c",seats[i][j]);
-        			}
-        			printf("\n");
-    			}
+            		
+                showseats(seats);
             }
-            if(b1==3)
+            if(b1==3)			//Need 3 seats
             {
             	while(1)
 				{
@@ -163,21 +137,12 @@ int main(void)
                 	}
 				}
                 
-                printf("\\123456789\n");
-    			for(i=8;i>=0;i--)
-    			{
-        			printf("%d ",i+1);
-        			for(j=0;j<=8;j++)
-        			{
-            			printf("%c",seats[i][j]);
-        			}
-        			printf("\n");
-    			}	
+                showseats(seats);	
             }
-            if(b1==4)
+            if(b1==4)			//Need 4 seats
             {
             	b4=rand()%2;
-				if(b4==0)
+				if(b4==0)			//Horizontal 4 seats
 				{ 
             		while(1)
 					{
@@ -193,18 +158,9 @@ int main(void)
                 		}
                 		
 					}
-					printf("\\123456789\n");
-    				for(i=8;i>=0;i--)
-    				{
-        				printf("%d ",i+1);
-        				for(j=0;j<=8;j++)
-        				{
-            				printf("%c",seats[i][j]);
-        				}
-        			printf("\n");
-    				}
+					showseats(seats);
 				}
-				if(b4==1)
+				if(b4==1)			//Vertical 2x2 seats
 				{ 
             		while(1)
 					{
@@ -220,22 +176,13 @@ int main(void)
                 		}
                 		
 					}
-					printf("\\123456789\n");
-    				for(i=8;i>=0;i--)
-    				{
-        				printf("%d ",i+1);
-        				for(j=0;j<=8;j++)
-        				{
-            				printf("%c",seats[i][j]);
-        				}
-        			printf("\n");
-    				}
+					showseats(seats);
 				}
 			}
-			printf("是否要保留(y/n):");
+			printf("是否要保留(y/n):");			//Ask if they want to keep the seats
 			fflush(stdin);
 			scanf("%c",&b5);
-			if(b5=='y'||b5=='Y')
+			if(b5=='y'||b5=='Y')			//Keep the reservation
 			{
 				for(i=0;i<=8;i++)
 				{
@@ -248,7 +195,7 @@ int main(void)
 					}
 				}
 			}
-			if(b5=='n'||b5=='N')
+			if(b5=='n'||b5=='N')			//Do not keep the reservation
 			{
 				for(i=0;i<=8;i++)
 				{
@@ -277,18 +224,17 @@ int main(void)
 					printf("請依照範例依序輸入第%d個座位(1-1為第一列的第一行):",i);
 					fflush(stdin);
 					scanf("%d %c %d",&c1,&c2,&c3);
-					fflush(stdin);
 					if(c2!='-')
 					{
 						printf("格式錯誤，請輸入正確格式\n");
 						continue;
 					}
-					if(seats[9-c1][c3-1]=='*')
+					if(seats[c1-1][c3-1]=='*')
 					{
 						printf("錯誤，這位子已有人，麻煩重新選擇\n");
 						continue;
 					}
-					if(c2=='-'&&seats[9-c1][c3-1]=='-')
+					if(c2=='-'&&seats[c1-1][c3-1]=='-')
 					{
 						break;
 					}
@@ -296,16 +242,7 @@ int main(void)
 				seats[c1-1][c3-1]='@';
 					
 			}
-			printf("\\123456789\n");
-    		for(i=8;i>=0;i--)
-    		{
-        		printf("%d ",i+1);
-        		for(j=0;j<=8;j++)
-        		{
-            		printf("%c",seats[i][j]);
-        		}
-        			printf("\n");
-    			}
+			showseats(seats);
 					printf("沒有問題的話按下任意按鍵繼續\n");
 					system("pause");
 					for(i=0;i<=8;i++)
@@ -327,7 +264,7 @@ int main(void)
 				printf("Continue?(y/n):");
 				fflush(stdin);
 				scanf("%c",&accepted);
-				if(accepted=='y'||accepted=='n')			//判斷輸入的字元是否在範圍內 
+				if(accepted=='y'||accepted=='n')			//Check if the input is valid 
 				{
 					break;
 				}
@@ -335,12 +272,12 @@ int main(void)
 				
 			}while(1);
 			
-			if(accepted=='y')			//回到主選單 
+			if(accepted=='y')			//Go back to the main menu
 			{
 				continue;
 			}
 			
-			if(accepted=='n')			//結束迴圈 
+			if(accepted=='n')			//Exit the program
 			{
 				return 0;
 			}
@@ -349,4 +286,18 @@ int main(void)
 
 	system("pause");
 	return 0;
+}
+void showseats(char ch[9][9])
+{
+	printf("\\123456789\n");
+	int i,j;
+    	for(i=8;i>=0;i--)
+    	{
+			printf("%d ",i+1);
+        	for(j=0;j<=8;j++)
+        	{
+            	printf("%c",ch[i][j]);
+        	}
+        	printf("\n");
+    	}
 }
