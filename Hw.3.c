@@ -3,7 +3,7 @@
 #include<time.h> 
 int main(void)
 {
-	int i,j,wrong=0,password,a1=0,a2,a3;
+	int i,j,wrong=0,password,a1=0,a2,a3,b1,b2,b3,b4,b5;
 	char option,accepted;
 	char seats[9][9];
 	
@@ -43,6 +43,25 @@ int main(void)
 	
 	}while(1);
 	
+	for(i=0;i<9;i++)
+			{
+				for(j=0;j<9;j++)
+				{
+					seats[i][j]='-';
+				}
+			}
+			
+			while(a1<=9)
+			{
+				a2=rand()%9;
+				a3=rand()%9;
+				if(seats[a2][a3]=='-')
+				{
+					seats[a2][a3]='*';
+					a1++;
+				}
+			}
+	
 	while(1)
 	{
 		system("CLS");
@@ -59,26 +78,7 @@ int main(void)
 		scanf("%c",&option);
 		//Option a
 		if(option=='a')
-		{
-			for(i=0;i<9;i++)
-			{
-				for(j=0;j<9;j++)
-				{
-					seats[i][j]='-';
-				}
-			}
-			
-			while(a1<=9)
-			{
-				a2=rand()%9;
-				a3=rand()%9;
-				if(seats[a2][a3]!='*')
-				{
-					seats[a2][a3]='*';
-					a1++;
-				}
-			}
-			
+		{	
 			printf("\\123456789\n");
 			for(i=8;i>=0;i--)
 			{
@@ -90,6 +90,179 @@ int main(void)
 				printf("\n");
 			}
 			system("pause");
+		}
+		//Option b
+		if(option=='b')
+		{
+			printf("請問您需要幾個座位？(1-4):");
+            fflush(stdin);
+            scanf("%d",&b1);
+            
+            if(b1==1)
+            {
+            	while(1)
+            	{
+            		b2=rand()%9;
+					b3=rand()%9;
+					if(seats[b2][b3]=='-')
+					{
+						seats[b2][b3]='@';
+						break;
+					}
+				}
+    			printf("\\123456789\n");
+    			for(i=8;i>=0;i--)
+    			{
+        			printf("%d ",i+1);
+        			for(j=0;j<=8;j++)
+        			{
+            			printf("%c",seats[i][j]);
+        			}
+        			printf("\n");
+    			}
+			}	
+			
+			if(b1==2)
+            {
+            	while(1)
+				{
+					b2=rand()%9;
+            		b3=rand()%8;
+            		if(seats[b2][b3]=='-'&&seats[b2][b3+1]=='-')
+                	{
+                   		seats[b2][b3]='@';
+                    	seats[b2][b3+1]='@';
+                    	break;
+                	}
+				}
+            	
+                	
+                printf("\\123456789\n");
+    			for(i=8;i>=0;i--)
+    			{
+        			printf("%d ",i+1);
+        			for(j=0;j<=8;j++)
+        			{
+            			printf("%c",seats[i][j]);
+        			}
+        			printf("\n");
+    			}
+            }
+            if(b1==3)
+            {
+            	while(1)
+				{
+					b2=rand()%9;
+                	b3=rand()%7;
+                	if(seats[b2][b3]=='-'&&seats[b2][b3+1]=='-'&&seats[b2][b3+2]=='-')
+                	{
+                    	seats[b2][b3]='@';
+                    	seats[b2][b3+1]='@';
+                    	seats[b2][b3+2]='@';
+                    	break;
+                	}
+				}
+                
+                printf("\\123456789\n");
+    			for(i=8;i>=0;i--)
+    			{
+        			printf("%d ",i+1);
+        			for(j=0;j<=8;j++)
+        			{
+            			printf("%c",seats[i][j]);
+        			}
+        			printf("\n");
+    			}	
+            }
+            if(b1==4)
+            {
+            	b4=rand()%2;
+				if(b4==0)
+				{ 
+            		while(1)
+					{
+						b2=rand()%9;
+                		b3=rand()%6;
+                		if(seats[b2][b3]=='-'&&seats[b2][b3+1]=='-'&&seats[b2][b3+2]=='-'&&seats[b2][b3+3]=='-')
+                		{
+                    		seats[b2][b3]='@';
+                    		seats[b2][b3+1]='@';
+                    		seats[b2][b3+2]='@';
+                    		seats[b2][b3+3]='@';
+                    		break;
+                		}
+                		
+					}
+					printf("\\123456789\n");
+    				for(i=8;i>=0;i--)
+    				{
+        				printf("%d ",i+1);
+        				for(j=0;j<=8;j++)
+        				{
+            				printf("%c",seats[i][j]);
+        				}
+        			printf("\n");
+    				}
+				}
+				if(b4==1)
+				{ 
+            		while(1)
+					{
+						b2=rand()%8;
+                		b3=rand()%8;
+                		if(seats[b2][b3]=='-'&&seats[b2][b3+1]=='-'&&seats[b2+1][b3]=='-'&&seats[b2+1][b3+1]=='-')
+                		{
+                    		seats[b2][b3]='@';
+                    		seats[b2][b3+1]='@';
+                    		seats[b2+1][b3]='@';
+                    		seats[b2+1][b3+1]='@';
+                    		break;
+                		}
+                		
+					}
+					printf("\\123456789\n");
+    				for(i=8;i>=0;i--)
+    				{
+        				printf("%d ",i+1);
+        				for(j=0;j<=8;j++)
+        				{
+            				printf("%c",seats[i][j]);
+        				}
+        			printf("\n");
+    				}
+				}
+			}
+			printf("是否要保留(y/n):");
+			fflush(stdin);
+			scanf("%c",&b5);
+			if(b5=='y'||b5=='Y')
+			{
+				for(i=0;i<=8;i++)
+				{
+					for(j=0;j<=8;j++)
+					{
+						if(seats[i][j]=='@')
+						{
+							seats[i][j]='*';
+						}
+					}
+				}
+			}
+			if(b5=='n'||b5=='N')
+			{
+				for(i=0;i<=8;i++)
+				{
+					for(j=0;j<=8;j++)
+					{
+						if(seats[i][j]=='@')
+						{
+							seats[i][j]='-';
+						}
+					}
+				}
+			}
+			system("pause");
+			continue; 
 		}
 		//Option d
 		if(option=='d')
