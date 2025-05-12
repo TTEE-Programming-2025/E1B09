@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h> 
 int main(void)
 {
-	int i,j,wrong=0,password;
+	int i,j,wrong=0,password,a1=0,a2,a3;
 	char option,accepted;
+	char seats[9][9];
 	
 	printf("**********************************************\n");			//Print a personalized screen display
     for (i=0;i<20;i++) {
@@ -43,7 +45,6 @@ int main(void)
 	
 	while(1)
 	{
-		system("pause");
 		system("CLS");
 		
 		printf("----------[Booking System]----------\n");			//Display the main menu
@@ -56,6 +57,40 @@ int main(void)
 		printf("請輸入你要選擇的選項:");
 		fflush(stdin);
 		scanf("%c",&option);
+		//Option a
+		if(option=='a')
+		{
+			for(i=0;i<9;i++)
+			{
+				for(j=0;j<9;j++)
+				{
+					seats[i][j]='-';
+				}
+			}
+			
+			while(a1<=9)
+			{
+				a2=rand()%9;
+				a3=rand()%9;
+				if(seats[a2][a3]!='*')
+				{
+					seats[a2][a3]='*';
+					a1++;
+				}
+			}
+			
+			printf("\\123456789\n");
+			for(i=8;i>=0;i--)
+			{
+				printf("%d ",i+1);
+				for(j=0;j<=8;j++)
+				{
+					printf("%c",seats[i][j]);
+				}
+				printf("\n");
+			}
+			system("pause");
+		}
 		//Option d
 		if(option=='d')
 		{
