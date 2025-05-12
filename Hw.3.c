@@ -3,8 +3,8 @@
 #include<time.h> 
 int main(void)
 {
-	int i,j,wrong=0,password,a1=0,a2,a3,b1,b2,b3,b4,b5;
-	char option,accepted;
+	int i,j,wrong=0,password,a1=0,a2,a3,b1,b2,b3,b4,b5,num,c1,c3,c4=1;
+	char option,accepted,c2;
 	char seats[9][9];
 	
 	printf("**********************************************\n");			//Print a personalized screen display
@@ -263,6 +263,61 @@ int main(void)
 			}
 			system("pause");
 			continue; 
+		}
+		//Option c
+		if(option=='c')
+		{
+			printf("請輸入有幾位(1-71):");
+			fflush(stdin);
+			scanf("%d",&num);
+			for(i=1;i<=num;i++)
+			{
+				while(1)
+				{
+					printf("請依照範例依序輸入第%d個座位(1-1為第一列的第一行):",i);
+					fflush(stdin);
+					scanf("%d %c %d",&c1,&c2,&c3);
+					fflush(stdin);
+					if(c2!='-')
+					{
+						printf("格式錯誤，請輸入正確格式\n");
+						continue;
+					}
+					if(seats[9-c1][c3-1]=='*')
+					{
+						printf("錯誤，這位子已有人，麻煩重新選擇\n");
+						continue;
+					}
+					if(c2=='-'&&seats[9-c1][c3-1]=='-')
+					{
+						break;
+					}
+				}
+				seats[c1-1][c3-1]='@';
+					
+			}
+			printf("\\123456789\n");
+    		for(i=8;i>=0;i--)
+    		{
+        		printf("%d ",i+1);
+        		for(j=0;j<=8;j++)
+        		{
+            		printf("%c",seats[i][j]);
+        		}
+        			printf("\n");
+    			}
+					printf("沒有問題的話按下任意按鍵繼續\n");
+					system("pause");
+					for(i=0;i<=8;i++)
+					{
+						for(j=0;j<=8;j++)
+						{
+							if(seats[i][j]=='@')
+							{
+								seats[i][j]='*';
+							}
+						}
+					}
 		}
 		//Option d
 		if(option=='d')
