@@ -26,25 +26,39 @@ int main(void)
 	
 	printf("Welcome~\n");
 		
-		do			
+	do			
+	{
+		if(wrong==3)			
 		{
-			if(wrong==3)			
-			{
-				printf("抱歉密碼已經錯誤三次，將結束此程式."); 
-				return 0;
-			}
+			printf("抱歉密碼已經錯誤三次，將結束此程式."); 
+			return 0;
+		}
 		
-			printf("請輸入密碼:");
-			scanf("%d",&password);
-			if(password==2025)			
-			{
-				break;
-			}
+		printf("請輸入密碼:");
+		scanf("%d",&password);
+		if(password==2025)			
+		{
+			break;
+		}
 		
-			printf("密碼錯誤請重新輸入\n");
-			wrong++;
-		}while(1);
-		
+		printf("密碼錯誤請重新輸入\n");
+		wrong++;
+	}while(1);
+	
+	while(1)
+	{
+		system("CLS");
+		printf("------------[Grade System]----------\n");
+		printf("|                                  |\n");
+		printf("| a. Enter student grades          |\n");
+		printf("| b. Display student grades 	   |\n");
+		printf("| c. Search for student grades     |\n");
+		printf("| d. Grade ranking                 |\n");
+		printf("| e. Exit system                   |\n");
+		printf("|                                  |\n");
+		printf("------------------------------------\n");
+		system("pause");
+	}
 	system("pause");
 	return 0;
 }
