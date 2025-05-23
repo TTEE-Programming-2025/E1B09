@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
+int optionE();
 int main(void)
 {
 	int h=20,i,j,k,wrong=0,password;
+	char option,ch1;
 
 	printf("---------------------------------------------\n");
     for (i=1;i<=h;i++) {
@@ -57,8 +59,41 @@ int main(void)
 		printf("| e. Exit system                   |\n");
 		printf("|                                  |\n");
 		printf("------------------------------------\n");
-		system("pause");
+		
+		printf("請輸入你要選擇的選項:");
+		fflush(stdin);
+		scanf("%c",&option);
+		
+		if(option=='e')
+		{
+			do
+			{ 
+				printf("確定離開?(y/n):");
+				fflush(stdin);
+				scanf("%c",&ch1);
+				if(ch1=='y'||ch1=='n')
+				{
+					break;
+				}
+				printf("輸入錯誤，請輸入y或n\n"); 
+				
+			}while(1);
+			
+			if(ch1=='y')						
+			{
+				return 0;
+			}
+			
+			if(ch1=='n')						
+			{
+				continue;
+			}
+		}
 	}
 	system("pause");
 	return 0;
+}
+int optionE()
+{
+
 }
