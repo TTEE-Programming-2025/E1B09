@@ -1,10 +1,21 @@
 #include<stdio.h>
 #include<stdlib.h>
-int optionE();
+#include <string.h>
+void optionA();
+struct student 
+	{
+		char name[20];
+		char studentID[7];
+		int math;
+		int physics;
+		int english;
+	};
 int main(void)
 {
 	int h=20,i,j,k,wrong=0,password;
 	char option,ch1;
+	
+	 
 
 	printf("---------------------------------------------\n");
     for (i=1;i<=h;i++) {
@@ -64,6 +75,12 @@ int main(void)
 		fflush(stdin);
 		scanf("%c",&option);
 		
+		if(option=='a')
+		{
+			system("CLS");
+			optionA();
+		}
+		
 		if(option=='e')
 		{
 			do
@@ -93,7 +110,90 @@ int main(void)
 	system("pause");
 	return 0;
 }
-int optionE()
+void optionA()
 {
-
-}
+	int n,a1,i,j;
+	while(1)
+	{
+		printf("請輸入要輸入幾個學生(5-10):");
+		fflush(stdin);
+		scanf("%d",&n);
+		if(n>=5&&n<=10)
+		{
+			break;
+		}
+		printf("請輸入5-10個\n");
+	}
+	struct student a[n];
+	
+	for(i=0;i<n;i++)
+	{
+	 	printf("第%d位學生資料\n",i+1);
+	 	printf("請輸入姓名:");
+	 	fflush(stdin);
+	 	scanf("%s",a[i].name);
+	 	
+	 	do
+		{
+			a1=0;
+            printf("請輸入學號(6位整數):");
+            fflush(stdin);
+            scanf("%s",a[i].studentID);
+            if (strlen(a[i].studentID)!=6) 
+			{
+				printf("學號錯誤，請重新輸入\n");
+				a1=1;
+				
+			} 
+            else
+            {
+            	for (j = 0; j < 6; j++) 
+				{
+                    if (a[i].studentID[j]<'0'||a[i].studentID[j]>'9') 
+					{
+                        printf("錯誤! 學號中不能包含英文字母。\n");
+                        a1=1;
+                        break;
+					}
+        		}
+			}
+		}while(a1==1);
+		
+		while(1)
+		{
+			printf("請輸入數學成績:");
+			fflush(stdin);
+            scanf("%d",&a[i].math);
+            if(a[i].math>=0&&a[i].math<=100)
+            {
+            	break;
+			}	
+			printf("請輸入0到100的數字\n");
+		}
+		
+		while(1)
+		{
+			printf("請輸入物理成績:");
+			fflush(stdin);
+            scanf("%d",&a[i].physics);
+            if(a[i].physics>=0&&a[i].physics<=100)
+            {
+            	break;
+			}	
+			printf("請輸入0到100的數字\n");
+		}
+		while(1)
+		{
+			printf("請輸入英文成績:");
+			fflush(stdin);
+            scanf("%d",&a[i].english);
+            if(a[i].english>=0&&a[i].english<=100)
+            {
+            	break;
+			}	
+			printf("請輸入0到100的數字\n");
+		}
+	}
+	printf("輸入完畢");
+	system("pause");
+} 
