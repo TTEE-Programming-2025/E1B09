@@ -4,6 +4,7 @@
 #define max 10
 void optionA();
 void optionB();
+void optionC();
 int n;
 
 struct a
@@ -90,6 +91,12 @@ int main(void)
 		{
 			system("CLS");
 			optionB();
+		}
+		
+		if(option=='c')
+		{
+			system("CLS");
+			optionC();
 		}
 		
 		if(option=='e')
@@ -218,4 +225,26 @@ void optionB()
    		printf("%-10s %-10s %-6d %-6d %-6d %-6.1f\n",student[i].name,student[i].studentID,student[i].math,student[i].physics,student[i].english,student[i].avg);
 	}
 	system("pause");
- } 
+}
+void optionC()
+{
+	int i,a=0;
+	char name[20];
+	printf("請輸入要收尋的姓名:");
+	scanf("%s",name);
+	fflush(stdin);
+	for(i=0;i<n;i++)
+	{
+		if(strcmp(name,student[i].name)==0)
+		{
+			printf("%-10s %-10s %-6d %-6d %-6d %-6.1f\n",student[i].name,student[i].studentID,student[i].math,student[i].physics,student[i].english,student[i].avg);
+			a=1;
+		}	
+	}
+	if(a==0)
+	{
+		printf("資料不存在");	
+	}
+	
+	system("pause");
+} 
