@@ -5,6 +5,7 @@
 void optionA();
 void optionB();
 void optionC();
+void optionD();
 int n;
 
 struct a
@@ -98,6 +99,12 @@ int main(void)
 			system("CLS");
 			optionC();
 		}
+		
+		if(option=='d')
+		{
+			system("CLS");
+			optionD();
+		} 
 		
 		if(option=='e')
 		{
@@ -230,13 +237,14 @@ void optionC()
 {
 	int i,a=0;
 	char name[20];
-	printf("請輸入要收尋的姓名:");
+	printf("請輸入要搜尋的姓名:");
 	scanf("%s",name);
 	fflush(stdin);
 	for(i=0;i<n;i++)
 	{
 		if(strcmp(name,student[i].name)==0)
 		{
+			printf("%-10s %-10s %-6s %-6s %-6s %-6s\n", "學生姓名", "學號", "數學", "物理", "英文", "平均");
 			printf("%-10s %-10s %-6d %-6d %-6d %-6.1f\n",student[i].name,student[i].studentID,student[i].math,student[i].physics,student[i].english,student[i].avg);
 			a=1;
 		}	
@@ -247,4 +255,28 @@ void optionC()
 	}
 	
 	system("pause");
-} 
+}
+
+void optionD()
+{
+	int i,j,a;
+	struct a temp;
+	for(i=1;i<n;i++)
+	{
+		for(j=0;j<(n-i);j++)
+		{
+			if(student[j].avg<student[j+1].avg)
+			{
+				temp=student[j];
+				student[j]=student[j+1];
+				student[j+1]=temp;
+			} 
+		}
+	}
+	printf("%-10s %-10s %-6s\n", "學生姓名", "學號", "平均");
+	for(i=0;i<n;i++)
+	{
+   		printf("%-10s %-10s %-6.1f\n",student[i].name,student[i].studentID,student[i].avg);
+	}
+	system("pause");
+}
